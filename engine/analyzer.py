@@ -39,7 +39,7 @@ class QueryAnalyzer:
             query_text = q['query']
             
             # Simple substitution for parameterized queries to allow EXPLAIN to run
-            executable_query = re.sub(r'\$[0-9]+', '1', query_text)
+            executable_query = re.sub(r'\$[0-9]+', "'1'", query_text)
             
             explain_sql = f"EXPLAIN (ANALYZE, BUFFERS, FORMAT JSON) {executable_query}"
             
